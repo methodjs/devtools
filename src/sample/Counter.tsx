@@ -19,6 +19,16 @@ const decrement = () =>
 const zero = () =>
   setCount(({ current }) => ({ pre: current, current: 0 }), { action: 'zero' });
 
+const payload = () =>
+  setCount(({ current }) => ({ pre: current, current: 0 }), {
+    action: 'payload',
+    dummy: {
+      a: 'a',
+      b: 0,
+      c: [{ d: 7 }, 0, '1'],
+    },
+  });
+
 export function Counter() {
   const { pre, current } = useCount();
   useEffect(() => {
@@ -34,6 +44,7 @@ export function Counter() {
       </div>
       <div>
         <button onClick={zero}>Zero</button>
+        <button onClick={payload}>Payload</button>
       </div>
     </div>
   );

@@ -19,3 +19,12 @@ export function onChangeActivatedFilter() {
     { action: 'onChangeActivatedFilter' },
   );
 }
+
+export function onChangePreserveLog() {
+  setFilter(
+    ({ preserveLog }) => ({
+      preserveLog: !preserveLog,
+    }),
+    { action: 'onChangePreserveLog' },
+  );
+}

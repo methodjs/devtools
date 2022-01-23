@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { onChangeActivatedFilter, onChangeNameFilter } from './Header.events';
+import {
+  onChangeActivatedFilter,
+  onChangeNameFilter,
+  onChangePreserveLog,
+} from './Header.events';
 import { useFilter } from './stores';
 
 export function Header() {
-  const { nameFilter, activatedFilter } = useFilter();
+  const { nameFilter, activatedFilter, preserveLog } = useFilter();
   const activatedFilterRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (activatedFilterRef.current === null) {
@@ -28,7 +32,7 @@ export function Header() {
           marginBottom: 0,
         }}
       />
-      <label htmlFor="activatedFilter">
+      <label htmlFor="activatedFilter" style={{ marginRight: '1em' }}>
         <input
           id="activatedFilter"
           type={'checkbox'}
@@ -38,6 +42,16 @@ export function Header() {
           value={'activatedFilter'}
         />
         Activated
+      </label>
+      <label htmlFor="preserveLog">
+        <input
+          id="preserveLog"
+          type={'checkbox'}
+          checked={preserveLog}
+          onChange={onChangePreserveLog}
+          value={'preserveLog'}
+        />
+        Preserve Log
       </label>
     </div>
   );

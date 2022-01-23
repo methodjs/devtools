@@ -34,3 +34,5 @@ js/
 # Rollup Build directories
 build/
 
+# Webpack Build directories
+dist/
